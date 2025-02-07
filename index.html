@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naggins Search</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div id="particles-background"></div> <!-- Particles background -->
+
+    <div class="container">
+        <h1>Welcome to Naggins</h1>
+        <h2>Find Your Naggins</h2>
+
+        <div class="search-container">
+            <input type="text" id="search-bar" placeholder="Search by Name or ID" onkeyup="handlePreview()" />
+            <button onclick="handleSearch()">SEARCH</button>
+        </div>
+
+        <div id="preview-container" class="preview-container"></div> <!-- Preview Suggestions -->
+
+        <div id="error-message" class="error-message"></div> <!-- Error Message -->
+
+        <table id="result-table" class="result-table">
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <script src="scripts.js"></script> <!-- JavaScript file -->
+</body>
+</html>
