@@ -1,118 +1,78 @@
-/* Basic reset */
-* {
+/* Basic CSS to style the page */
+body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-body {
     font-family: Arial, sans-serif;
-    background: #000;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
-    overflow: hidden;
-    position: relative;
+    background-color: #111;
+    color: #fff;
 }
 
-.container {
-    position: absolute;
-    text-align: center;
-    z-index: 2;
-    width: 100%;
-    max-width: 600px;
-    padding: 20px;
-}
-
-h1, h2 {
-    margin-bottom: 20px;
-}
-
-.search-container {
-    position: relative;
-    width: 100%;
-    z-index: 3;
-}
-
-#search-bar {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    font-size: 1rem;
-    outline: none;
-}
-
-button {
-    padding: 10px;
-    width: 100%;
-    border: none;
-    background-color: white;
-    color: black;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-top: 10px;
-    z-index: 3;
-}
-
-#preview-container {
-    position: absolute;
-    width: 100%;
-    background: white;
-    color: black;
-    border-radius: 5px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    max-height: 150px;
-    overflow-y: auto;
-    z-index: 4;
-    display: none;
-}
-
-.preview-item {
-    padding: 10px;
-    cursor: pointer;
-    border-bottom: 1px solid #ccc;
-}
-
-.preview-item:hover {
-    background: lightgray;
-}
-
-.result-table {
-    margin-top: 20px;
-    width: 100%;
-    border-collapse: collapse;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-}
-
-.result-table td {
-    border: 1px solid white;
-    padding: 10px;
-}
-
-.error-message {
-    color: red;
-    font-weight: bold;
-    margin-top: 20px;
-    display: none;
-}
-
-#particles-background {
+/* Particles container styling */
+#tsparticles {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.1);
-    animation: particles 10s infinite linear;
-    z-index: 1;
+    z-index: -1; /* Make sure particles don't overlap content */
 }
 
-@keyframes particles {
-    0% { background-position: 0 0; }
-    100% { background-position: 100% 100%; }
+/* Container styling for content */
+.container {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 50px;
+}
+
+/* Styling for search input */
+.search-bar {
+    padding: 10px;
+    width: 70%;
+    max-width: 500px;
+    margin: 20px auto;
+    font-size: 1.2rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Styling for the error message */
+.error-message {
+    font-weight: bold;
+    color: red;
+}
+
+/* Styling for the result table */
+#result-table {
+    display: none;
+    margin-top: 20px;
+    width: 100%;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#result-table table {
+    width: 80%;
+    border-collapse: collapse;
+    margin: auto;
+}
+
+#result-table td {
+    padding: 10px;
+    border: 1px solid #fff;
+}
+
+/* Styling for preview list */
+.preview-item {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.preview-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
 }
