@@ -1,65 +1,190 @@
-const persons = [
-    { name: "Md Maruf", id: "242015312", mail: "242015312@eastdelta.edu.bd", program: "B.Sc. in CSE", semester: "3rd(running)", section: "07" },
-    { name: "Nimmi", id: "242016212", mail: "242016212@eastdelta.edu.bd", program: "B.Sc. in CSE", semester: "3rd(running)", section: "07" },
-    { name: "Kaiser Kamal Ifthe", id: "242018212", mail: "242018212@eastdelta.edu.bd", program: "B.Sc. in CSE", semester: "3rd(running)", section: "07" },
-    { name: "Mayesha", id: "242016112", mail: "242016112@eastdelta.edu.bd", program: "Currently doing preparation for CU admission test." },
-    { name: "Miftah Al Rahman", id: "242017212", mail: "242017212@eastdelta.edu.bd", program: "B.Sc. in CSE", semester: "3rd(running)", section: "07" },
-    { name: "Naim Uddin", id: "242016642", mail: "242016642@eastdelta.edu.bd", program: "B.Sc. in CSE", semester: "3rd(running)", section: "07" },
-    { name: "Nusrat Jahan Antora", id: "242023212", mail: "242023212@eastdelta.edu.bd", program: "B.Sc. in CSE", semester: "3rd(running)", section: "07" },
-    { name: "Sadnan", id: "242017512", mail: "242017512@eastdelta.edu.bd", program: "B.Sc. in CSE", semester: "3rd(running)", section: "07" },
-    { name: "Ibrahim Khan", id: "242017312", mail: "242017312@eastdelta.edu.bd", program: "B.Sc. in CSE", semester: "3rd(running)", section: "07" },
-    { name: "Saika Jahan", id: "242023312", mail: "242023312@eastdelta.edu.bd", program: "B.Sc. in CSE", semester: "3rd(running)", section: "07" },
-    { name: "Mohima", id: "242023112", mail: "242023112@eastdelta.edu.bd", program: "B.Sc. in CSE", semester: "3rd(running)", section: "07" },
-    { name: "Md Robiul Hossain", id: "242014512", mail: "242014512@eastdelta.edu.bd", program: "B.Sc. in CSE", semester: "3rd(running)", section: "07" },
+// Initialize tsParticles
+tsParticles.load("tsparticles", {
+    particles: {
+        number: {
+            value: 100,
+            density: {
+                enable: true,
+                area: 800
+            }
+        },
+        color: {
+            value: "#ffffff"
+        },
+        shape: {
+            type: "circle"
+        },
+        opacity: {
+            value: 0.5,
+            random: true
+        },
+        size: {
+            value: 3,
+            random: true
+        },
+        move: {
+            enable: true,
+            speed: 2,
+            direction: "none",
+            random: false,
+            straight: false,
+            outModes: "out"
+        }
+    },
+    interactivity: {
+        events: {
+            onHover: {
+                enable: true,
+                mode: "repulse"
+            },
+            onClick: {
+                enable: true,
+                mode: "push"
+            }
+        }
+    }
+});
+
+// Array of people data
+const people = [
+    {
+        name: "Md Maruf",
+        id: "242015312",
+        mail: "242015312@eastdelta.edu.bd",
+        program: "B.Sc. in CSE",
+        semester: "3rd (running)",
+        section: "07"
+    },
+    {
+        name: "Nimmi",
+        id: "242016212",
+        mail: "242016212@eastdelta.edu.bd",
+        program: "B.Sc. in CSE",
+        semester: "3rd (running)",
+        section: "07"
+    },
+    {
+        name: "Kaiser Kamal Ifthe",
+        id: "242018212",
+        mail: "242018212@eastdelta.edu.bd",
+        program: "B.Sc. in CSE",
+        semester: "3rd (running)",
+        section: "07"
+    },
+    {
+        name: "Mayesha",
+        id: "242016112",
+        mail: "242016112@eastdelta.edu.bd",
+        program: "B.Sc. in CSE",
+        semester: "Preparing for CU Admission Test",
+        section: "N/A"
+    },
+    {
+        name: "Miftah Al Rahman",
+        id: "242017212",
+        mail: "242017212@eastdelta.edu.bd",
+        program: "B.Sc. in CSE",
+        semester: "3rd (running)",
+        section: "07"
+    },
+    {
+        name: "Naim Uddin",
+        id: "242016642",
+        mail: "242016642@eastdelta.edu.bd",
+        program: "B.Sc. in CSE",
+        semester: "3rd (running)",
+        section: "07"
+    },
+    {
+        name: "Nusrat Jahan Antora",
+        id: "242023212",
+        mail: "242023212@eastdelta.edu.bd",
+        program: "B.Sc. in CSE",
+        semester: "3rd (running)",
+        section: "07"
+    },
+    {
+        name: "Sadnan",
+        id: "242017512",
+        mail: "242017512@eastdelta.edu.bd",
+        program: "B.Sc. in CSE",
+        semester: "3rd (running)",
+        section: "07"
+    },
+    {
+        name: "Ibrahim Khan",
+        id: "242017312",
+        mail: "242017312@eastdelta.edu.bd",
+        program: "B.Sc. in CSE",
+        semester: "3rd (running)",
+        section: "07"
+    },
+    {
+        name: "Saika Jahan",
+        id: "242023312",
+        mail: "242023312@eastdelta.edu.bd",
+        program: "B.Sc. in CSE",
+        semester: "3rd (running)",
+        section: "07"
+    },
+    {
+        name: "Mohima",
+        id: "242023112",
+        mail: "242023112@eastdelta.edu.bd",
+        program: "B.Sc. in CSE",
+        semester: "3rd (running)",
+        section: "07"
+    },
+    {
+        name: "Md Robiul Hossain",
+        id: "242014512",
+        mail: "242014512@eastdelta.edu.bd",
+        program: "B.Sc. in CSE",
+        semester: "3rd (running)",
+        section: "07"
+    }
 ];
 
-function handleSearch() {
-    const searchValue = document.getElementById("search-bar").value.toLowerCase();
-    const result = persons.find(person => person.name.toLowerCase() === searchValue || person.id === searchValue);
-    
-    if (result) {
-        displayResult(result);
-        document.getElementById("error-message").style.display = "none";
+// Get HTML elements
+let searchInput = document.getElementById("search");
+let resultTable = document.getElementById("result-table");
+let errorMessage = document.getElementById("error-message");
+
+// Function to filter names and show them as preview
+searchInput.addEventListener("input", function () {
+    let searchTerm = searchInput.value.toLowerCase();
+    let results = people.filter(person =>
+        person.name.toLowerCase().includes(searchTerm) || person.id.includes(searchTerm)
+    );
+
+    let previewList = results.map(person => {
+        return `<div class="preview-item" onclick="showPersonData('${person.id}')">
+                    ${person.name} <br> Id: ${person.id}
+                </div>`;
+    }).join('');
+
+    if (previewList.length === 0) {
+        errorMessage.textContent = "No Naggins Found";
     } else {
-        document.getElementById("error-message").textContent = "No Naggins Found";
-        document.getElementById("error-message").style.display = "block";
-        document.getElementById("result-table").style.display = "none";
+        errorMessage.textContent = "";
     }
-}
 
-function handlePreview() {
-    const searchValue = document.getElementById("search-bar").value.toLowerCase();
-    const previewContainer = document.getElementById("preview-container");
+    // Display preview list
+    document.getElementById("preview-list").innerHTML = previewList;
+});
 
-    const previewSuggestions = persons.filter(person => person.name.toLowerCase().startsWith(searchValue) || person.id.startsWith(searchValue));
-
-    if (searchValue.length > 0 && previewSuggestions.length > 0) {
-        previewContainer.style.display = "block";
-        previewContainer.innerHTML = previewSuggestions.map(person => `
-            <div class="preview-item" onclick="handleSelectPreview('${person.name}')">
-                ${person.name} <br> Id: ${person.id}
-            </div>
-        `).join('');
-    } else {
-        previewContainer.style.display = "none";
-    }
-}
-
-function handleSelectPreview(name) {
-    document.getElementById("search-bar").value = name;
-    handleSearch();
-}
-
-function displayResult(person) {
-    const resultTable = document.getElementById("result-table");
-    resultTable.style.display = "block";
+// Function to display person details in the result table
+function showPersonData(id) {
+    let person = people.find(person => person.id === id);
     
-    resultTable.innerHTML = `
-        <tr><td>Name</td><td>${person.name}</td></tr>
-        <tr><td>Id</td><td>${person.id}</td></tr>
-        <tr><td>Mail</td><td>${person.mail}</td></tr>
-        <tr><td>Program</td><td>${person.program}</td></tr>
-        <tr><td>Semester</td><td>${person.semester}</td></tr>
-        <tr><td>Section</td><td>${person.section}</td></tr>
-    `;
+    if (person) {
+        document.getElementById("name").textContent = person.name;
+        document.getElementById("id").textContent = person.id;
+        document.getElementById("mail").textContent = person.mail;
+        document.getElementById("program").textContent = person.program;
+        document.getElementById("semester").textContent = person.semester;
+        document.getElementById("section").textContent = person.section;
+        
+        resultTable.style.display = "block";
+    }
 }
