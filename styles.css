@@ -1,78 +1,109 @@
-/* Basic CSS to style the page */
-body {
+/* Reset default styles */
+* {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    height: 100vh;
-    background-color: #111;
-    color: #fff;
+    box-sizing: border-box;
 }
 
-/* Particles container styling */
+/* Page styling */
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Particles container */
 #tsparticles {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Make sure particles don't overlap content */
+    z-index: 0;
 }
 
-/* Container styling for content */
+/* Main content container */
 .container {
     position: relative;
     z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
     text-align: center;
-    padding: 50px;
 }
 
-/* Styling for search input */
-.search-bar {
-    padding: 10px;
-    width: 70%;
-    max-width: 500px;
-    margin: 20px auto;
+/* Header styling */
+.title {
+    font-size: 4rem;
+    margin: 20px 0;
+}
+
+.subtitle {
     font-size: 1.2rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    margin-bottom: 30px;
 }
 
-/* Styling for the error message */
-.error-message {
-    font-weight: bold;
-    color: red;
-}
-
-/* Styling for the result table */
-#result-table {
-    display: none;
-    margin-top: 20px;
+/* Search bar styling */
+.search-bar {
     width: 100%;
-    text-align: left;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 400px;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #000;
+    margin-bottom: 20px;
 }
 
-#result-table table {
-    width: 80%;
-    border-collapse: collapse;
-    margin: auto;
+/* Search results dropdown */
+.search-results {
+    list-style: none;
+    max-width: 400px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    color: #000;
+    max-height: 300px;
+    overflow-y: auto;
+    display: none;
 }
 
-#result-table td {
-    padding: 10px;
-    border: 1px solid #fff;
-}
-
-/* Styling for preview list */
-.preview-item {
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 10px;
-    margin: 5px;
+.search-results li {
+    padding: 12px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    border-bottom: 1px solid #ddd;
+    transition: background 0.3s;
 }
 
-.preview-item:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+.search-results li:hover {
+    background: #f0f0f0;
+}
+
+/* Info table styling */
+.info-table {
+    width: 100%;
+    max-width: 600px;
+    margin: 30px auto;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.9);
+    color: #000;
+    display: none;
+}
+
+.info-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+/* Footer styling */
+footer {
+    position: fixed;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    padding: 10px;
 }
