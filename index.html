@@ -1,42 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Naggins Search</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Add tsParticles CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/dist/tsparticles.bundle.min.js"></script>
+    <title>NAGGINS Search</title>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+    <style>
+        /* Reset default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Page styling */
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Particles container */
+        #tsparticles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        /* Main content container */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Header styling */
+        .title {
+            font-size: 4rem;
+            margin: 20px 0;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        /* Search bar styling */
+        .search-bar {
+            width: 100%;
+            max-width: 400px;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #000;
+            margin-bottom: 20px;
+        }
+
+        /* Search results dropdown */
+        .search-results {
+            list-style: none;
+            max-width: 400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            color: #000;
+            max-height: 300px;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .search-results li {
+            padding: 12px;
+            cursor: pointer;
+            border-bottom: 1px solid #ddd;
+            transition: background 0.3s;
+        }
+
+        .search-results li:hover {
+            background: #f0f0f0;
+        }
+
+        /* Info table styling */
+        .info-table {
+            width: 100%;
+            max-width: 600px;
+            margin: 30px auto;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.9);
+            color: #000;
+            display: none;
+        }
+
+        .info-table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+
+        /* Footer styling */
+        footer {
+            position: fixed;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+            padding: 10px;
+        }
+    </style>
 </head>
-
 <body>
-    <!-- Particle Container -->
     <div id="tsparticles"></div>
-
+    
     <div class="container">
-        <h1 class="header">NAGGINS SEARCH</h1>
-        <p class="subtitle">Find the person you're looking for</p>
+        <h1 class="title">NAGGINS</h1>
+        <p class="subtitle">It is what it is</p>
         
-        <!-- Search Bar -->
-        <input type="text" id="search" placeholder="Type name or ID..." class="search-bar">
+        <input type="text" 
+               class="search-bar" 
+               placeholder="Search by Name/ID"
+               id="searchInput">
         
-        <!-- Result Table -->
-        <div id="result-table" style="display:none;">
-            <table>
-                <tr><td>Name</td><td id="name"></td></tr>
-                <tr><td>Id</td><td id="id"></td></tr>
-                <tr><td>Mail</td><td id="mail"></td></tr>
-                <tr><td>Program</td><td id="program"></td></tr>
-                <tr><td>Semester</td><td id="semester"></td></tr>
-                <tr><td>Section</td><td id="section"></td></tr>
-            </table>
-        </div>
+        <ul class="search-results" id="searchResults"></ul>
+        <table class="info-table" id="infoTable"></table>
         
-        <p id="error-message" class="error-message"></p>
+        <footer>© 2025 Md Robiul Hossain. All rights reserved.</footer>
     </div>
 
-    <script src="scripts.js"></script>
-</body>
+    <script>
+        // Initialize Particles
+        tsParticles.load("tsparticles", {
+            background: { color: "#000" },
+            particles: {
+                number: { value: 50 },
+                move: { enable: true, speed: 0.5 },
+                size: { value: 3 },
+                color: { value: "#ffffff" },
+                links: { enable: true, color: "#ffffff" }
+            }
+        });
 
+        // Sample data
+        const persons = [
+            { name: "Md Maruf", id: "242015312", mail: "242015312@eastdelta.edu.bd", program: "B.Sc. in CSE", semester: "3rd(running)", section: "07" },
+            // Add all other persons from your original array here
+        ];
+
+        // DOM Elements
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+        const infoTable = document.getElementById('infoTable');
+
+        // Search functionality
+        function handleSearch() {
+            const query = searchInput.value.toLowerCase();
+            searchResults.innerHTML = '';
+
+            if (!query) {
+                searchResults.style.display = 'none';
+                infoTable.style.display = 'none';
+                return;
+            }
+
+            const filtered = persons.filter(person =>
+                person.name.toLowerCase().includes(query) || 
+                person.id.includes(query)
+            );
+
+            if (filtered.length > 0) {
+                filtered.forEach(person => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<strong>${person.name}</strong> - ID: ${person.id}`;
+                    li.addEventListener('click', () => showPersonDetails(person));
+                    searchResults.appendChild(li);
+                });
+                searchResults.style.display = 'block';
+            } else {
+                searchResults.style.display = 'none';
+            }
+        }
+
+        // Show person details
+        function showPersonDetails(person) {
+            infoTable.innerHTML = `
+                <tbody>
+                    ${Object.entries(person).map(([key, value]) => `
+                        <tr>
+                            <td>${key.charAt(0).toUpperCase() + key.slice(1)}</td>
+                            <td>${value}</td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            `;
+            infoTable.style.display = 'table';
+            searchResults.style.display = 'none';
+            searchInput.value = '';
+        }
+
+        // Event listeners
+        searchInput.addEventListener('input', handleSearch);
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.search-bar') && !e.target.closest('.search-results')) {
+                searchResults.style.display = 'none';
+            }
+        });
+    </script>
+</body>
 </html>
