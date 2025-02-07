@@ -1,33 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Naggins Search</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Add tsParticles CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/dist/tsparticles.bundle.min.js"></script>
 </head>
-<body>
 
-    <div id="particles-background"></div> <!-- Particles background -->
+<body>
+    <!-- Particle Container -->
+    <div id="tsparticles"></div>
 
     <div class="container">
-        <h1>Welcome to Naggins</h1>
-        <h2>Find Your Naggins</h2>
-
-        <div class="search-container">
-            <input type="text" id="search-bar" placeholder="Search by Name or ID" onkeyup="handlePreview()" />
-            <button onclick="handleSearch()">SEARCH</button>
+        <h1 class="header">NAGGINS SEARCH</h1>
+        <p class="subtitle">Find the person you're looking for</p>
+        
+        <!-- Search Bar -->
+        <input type="text" id="search" placeholder="Type name or ID..." class="search-bar">
+        
+        <!-- Result Table -->
+        <div id="result-table" style="display:none;">
+            <table>
+                <tr><td>Name</td><td id="name"></td></tr>
+                <tr><td>Id</td><td id="id"></td></tr>
+                <tr><td>Mail</td><td id="mail"></td></tr>
+                <tr><td>Program</td><td id="program"></td></tr>
+                <tr><td>Semester</td><td id="semester"></td></tr>
+                <tr><td>Section</td><td id="section"></td></tr>
+            </table>
         </div>
-
-        <div id="preview-container" class="preview-container"></div> <!-- Preview Suggestions -->
-
-        <div id="error-message" class="error-message"></div> <!-- Error Message -->
-
-        <table id="result-table" class="result-table">
-            <tbody></tbody>
-        </table>
+        
+        <p id="error-message" class="error-message"></p>
     </div>
 
-    <script src="scripts.js"></script> <!-- JavaScript file -->
+    <script src="scripts.js"></script>
 </body>
+
 </html>
